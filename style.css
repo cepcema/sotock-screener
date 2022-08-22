@@ -423,11 +423,12 @@ a {
     height: 60px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-top: 4px;
 }
 
 @media (max-width: 768px) {
     .logo {
-        /*       margin-left: 5px; */
+        margin-left: 5px;
     }
 }
 
