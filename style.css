@@ -275,6 +275,8 @@ section {
     text-align: left;
     font: normal 16px sans-serif;
     padding: 5px 50px;
+    position: absolute;
+    margin-top: 40rem;
 }
 
 .footer-distributed .footer-left p {
@@ -729,4 +731,12 @@ a {
     color: rgb(28, 121, 184);
     -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
+}
+
+.hiden {
+    display: none;
+}
+
+.visible {
+    display: flexbox;
 }

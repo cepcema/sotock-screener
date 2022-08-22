@@ -2,8 +2,10 @@ const feedDisplay = document.querySelector(`.table`);
 const btnIPO = document.querySelector(`.IPO`);
 
 const url = `https://stocks-sample-api.herokuapp.com/tickers`;
+let search = document.querySelector(`#proba`);
 
 const stocks = [];
+let prefsList = [];
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {
@@ -12,7 +14,6 @@ window.onscroll = function() {
 
 // Get the header
 var header = document.getElementById("sticky2");
-console.log(header);
 
 // Get the offset position of the navbarr
 var sticky = header.offsetTop;
@@ -41,22 +42,22 @@ function sortTable(n) {
     // Set the sorting direction to ascending:
     dir = "asc";
     /* Make a loop that will continue until
-                                                                                                                  no switching has been done: */
+                                                                                                                                                                                                                                                                                        no switching has been done: */
     while (switching) {
         // Start by saying: no switching is done:
         switching = false;
         rows = table.rows;
         /* Loop through all table rows (except the
-                                                                                                                                                                                                                                  first, which contains table headers): */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              first, which contains table headers): */
         for (i = 1; i < rows.length - 1; i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Get the two elements you want to compare,
-                                                                                                                                                                                                                                                                                                                                                  one from current row and one from the next: */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    one from current row and one from the next: */
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
             /* Check if the two rows should switch place,
-                                                                                                                                                                                                                                                                                                                                                  based on the direction, asc or desc: */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    based on the direction, asc or desc: */
             if (dir == "asc") {
                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                     // If so, mark as a switch and break the loop:
@@ -73,14 +74,14 @@ function sortTable(n) {
         }
         if (shouldSwitch) {
             /* If a switch has been marked, make the switch
-                                                                                                                                                                                                                                                                                                                                                  and mark that a switch has been done: */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    and mark that a switch has been done: */
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
             // Each time a switch is done, increase this count by 1:
             switchcount++;
         } else {
             /* If no switching has been done AND the direction is "asc",
-                                                                                                                                                                                                                                                                                                                                                  set the direction to "desc" and run the while loop again. */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    set the direction to "desc" and run the while loop again. */
             if (switchcount == 0 && dir == "asc") {
                 dir = "desc";
                 switching = true;
@@ -89,17 +90,24 @@ function sortTable(n) {
     }
 }
 sortTable();
-let counter = 0;
+
+let counter = ``;
+
 fetch(url)
     .then((response) => response.json())
     .then((data) =>
-        data.data.values.forEach((article) => {
+        data.data.values.forEach((prefs) => {
             stocks.push(data.data.values);
-            // if (article[17] === `#N/A`) {
+            //  console.log(prefs[33]);
+
+            if (prefs[33] === `preferred stock`) {
+                prefsList.push(prefs);
+            }
+            // if (prefs[17] === `#N/A`) {
             //     return;
             // }
-            console.log(article[0]);
-            console.log(article[17]);
+            //console.log(prefs[0]);
+            //console.log(prefs[17]);
             counter++;
 
             const table = `
@@ -108,53 +116,107 @@ fetch(url)
             <tbody>
                 <tr>
                     <td >${counter}</td>
-                    <td>${article[0]}</td>
-                    <td>${article[1]}</td>
-                    <td>${article[2]}</td>
-                    <td>${article[3]}</td>
-                    <td>${article[4]}</td>
-                    <td>${article[5]}</td>
-                    <td>${article[6]}</td>
-                    <td>${article[7]}</td>
-                    <td>${article[8]}</td>
-                    <td>${article[9]}</td>
-                    <td>${article[10]}</td>
-                    <td>${article[11]}</td>
-                    <td>${article[12]}</td>
-                    <td>${article[13]}</td>
-                    <td>${article[14]}</td>
-                    <td>${article[15]}</td>
-                    <td>${article[16]}</td>
-                    <td>${article[17]}</td>
-                    <td>${article[18]}</td>
-                    <td>${article[19]}</td>
-                    <td>${article[20]}</td>
-                    <td>${article[21]}</td>
-                    <td>${article[22]}</td>
-                    <td>${article[23]}</td>
-                    <td>${article[24]}</td>
-                    <td>${article[25]}</td>
-                    <td>${article[26]}</td>
-                    <td>${article[28]}</td>
-                    <td>${article[29]}</td>
-                    <td>${article[30]}</td>
-                    <td>${article[31]}</td>
-                    <td>${article[32]}</td>
-                    <td>${article[33]}</td>
-                    <td>${article[34]}</td>
+                    <td>${prefs[0]}</td>
+                    <td>${prefs[1]}</td>
+                    <td>${prefs[2]}</td>
+                    <td>${prefs[3]}</td>
+                    <td>${prefs[4]}</td>
+                    <td>${prefs[5]}</td>
+                    <td>${prefs[6]}</td>
+                    <td>${prefs[7]}</td>
+                    <td>${prefs[8]}</td>
+                    <td>${prefs[9]}</td>
+                    <td>${prefs[10]}</td>
+                    <td>${prefs[11]}</td>
+                    <td>${prefs[12]}</td>
+                    <td>${prefs[13]}</td>
+                    <td>${prefs[14]}</td>
+                    <td>${prefs[15]}</td>
+                    <td>${prefs[16]}</td>
+                    <td>${prefs[17]}</td>
+                    <td>${prefs[18]}</td>
+                    <td>${prefs[19]}</td>
+                    <td>${prefs[20]}</td>
+                    <td>${prefs[21]}</td>
+                    <td>${prefs[22]}</td>
+                    <td>${prefs[23]}</td>
+                    <td>${prefs[24]}</td>
+                    <td>${prefs[25]}</td>
+                    <td>${prefs[26]}</td>
+                    <td>${prefs[28]}</td>
+                    <td>${prefs[29]}</td>
+                    <td>${prefs[30]}</td>
+                    <td>${prefs[31]}</td>
+                    <td>${prefs[32]}</td>
+                    <td>${prefs[33]}</td>
+                    <td>${prefs[34]}</td>
                     
                     
 
                 </tr>
             </tbody>
         </table>`;
-            //console.log(article.media[0][`media-metadata`][2].url)
-            // console.log(article);
+            //console.log(prefs.media[0][`media-metadata`][2].url)
+            // console.log(prefs);
             feedDisplay.insertAdjacentHTML(`beforeend`, table);
         })
     );
 
-//     <tr class="active-row">
-//     <td>Melissa</td>
-//     <td>5150</td>
-// </tr>
+search.addEventListener(`click`, function() {
+    let counter = 0;
+
+    //to hide the old list
+    let prefs = document.querySelector(`#myTable2`);
+    prefs.classList = `hiden`;
+    //---------to show the new list-------//
+    let prefsTable = document.querySelector(`#selectMe`);
+    prefsTable.classList = `styled-table`;
+    prefsList.forEach((prefs) => {
+        counter++;
+        const tablePrefs = `
+           
+    <table class="styled-table">
+    <tbody>
+        <tr>
+            <td>${counter}</td>
+            <td>${prefs[0]}</td>
+            <td>${prefs[1]}</td>
+            <td>${prefs[2]}</td>
+            <td>${prefs[3]}</td>
+            <td>${prefs[4]}</td>
+            <td>${prefs[5]}</td>
+            <td>${prefs[6]}</td>
+            <td>${prefs[7]}</td>
+            <td>${prefs[8]}</td>
+            <td>${prefs[9]}</td>
+            <td>${prefs[10]}</td>
+            <td>${prefs[11]}</td>
+            <td>${prefs[12]}</td>
+            <td>${prefs[13]}</td>
+            <td>${prefs[14]}</td>
+            <td>${prefs[15]}</td>
+            <td>${prefs[16]}</td>
+            <td>${prefs[17]}</td>
+            <td>${prefs[18]}</td>
+            <td>${prefs[19]}</td>
+            <td>${prefs[20]}</td>
+            <td>${prefs[21]}</td>
+            <td>${prefs[22]}</td>
+            <td>${prefs[23]}</td>
+            <td>${prefs[24]}</td>
+            <td>${prefs[25]}</td>
+            <td>${prefs[26]}</td>
+            <td>${prefs[28]}</td>
+            <td>${prefs[29]}</td>
+            <td>${prefs[30]}</td>
+            <td>${prefs[31]}</td>
+            <td>${prefs[32]}</td>
+            <td>${prefs[33]}</td>
+            <td>${prefs[34]}</td>
+        </tr>
+    </tbody>
+</table>`;
+        prefs.classList = `styled-table`;
+        prefsTable.insertAdjacentHTML(`beforeend`, tablePrefs);
+    });
+});

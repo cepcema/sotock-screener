@@ -17,12 +17,12 @@
             <!-- Navbar Logo -->
             <div class="logo">
                 <!-- Logo Placeholder for Inlustration -->
-                <a href="#home"><i class="fa fa-angellist"></i> Logo</a>
+                <a href="/index.html"><i class="fa fa-angellist"></i> Logo</a>
             </div>
 
             <!-- Navbar Links -->
             <ul id="menu">
-                <li><a href="#home">Homeeee</a></li>
+                <li><button id="proba">Preferd stocks list</button></li>
                 <!--
        -->
                 <li><a href="#services">Services</a></li>
@@ -52,6 +52,40 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
+
+    <table class="hiden" id="selectMe">
+        <thead id="header">
+            <div>
+                <tr>
+                    <th> <button onclick="sortTable(0)" type="button" class="button-30" role="button">N</button></th>
+                    <th> <button onclick="sortTable(0)" type="button" class="button-30" role="button">Symbol</button></th>
+                    <th> <button onclick="sortTable(1)" type="button" class="button-30" role="button">Last Price</button></th>
+                    <th> <button onclick="sortTable(2)" type="button" class="button-30" role="button">Company name</button></th>
+                    <th> <button onclick="sortTable(3)" type="button" class="button-30" role="button">Common Stock</button></th>
+                    <th> <button onclick="sortTable(4)" type="button" class="button-30" role="button">Divident (Annual)</button></th>
+                    <th> <button onclick="sortTable(5)" type="button" class="button-30" role="button">Call Date</button></th>
+                    <th> <button onclick="sortTable(6)" type="button" class="button-30" role="button">Call Price</button></th>
+                    <th> <button onclick="sortTable(7)" type="button" class="button-30" role="button">CallPriceDiv</button></th>
+                    <th> <button onclick="sortTable(8)" type="button" class="button-30" role="button">Nominal Yield</button></th>
+                    <th> <button onclick="sortTable(9)" type="button" class="button-30" role="button">Cumulative</button></th>
+                    <th> <button onclick="sortTable(10)" type="button" class="button-30" role="button">Current Yield %</button></th>
+                    <th> <button onclick="sortTable(11)" type="button" class="button-30" role="button">CY Stripped</button></th>
+                    <th> <button onclick="sortTable(12)" type="button" class="button-30" role="button">Day Change</button></th>
+                    <th> <button onclick="sortTable(13)" type="button" class="button-30" role="button">Days Accrued PDate</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Dist Frequency</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Div amount</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Dividend Accrued PDate</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Ex div date</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Exchange</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Years to call</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Years to call</button></th>
+                    <th> <button onclick="sortTable(14)" type="button" class="button-30" role="button">Years to call</button></th>
+                </tr>
+            </div>
+        </thead>
+    </table>
+
+
 
     <table class="styled-table" id="myTable2">
         <thead id="header">
