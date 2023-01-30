@@ -1,7 +1,7 @@
 const feedDisplay = document.querySelector(`.table`);
 const btnIPO = document.querySelector(`.IPO`);
 
-const url = `https://stocks-sample-api.herokuapp.com/tickers`;
+const url = `https://adminka.onrender.com/`;
 let search = document.querySelector(`#proba`);
 
 const stocks = [];
